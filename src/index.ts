@@ -4,13 +4,19 @@ import { z } from "zod"
 const userSchema = z.object({
   email: z.string().email(),
   userName: z.string(),
-  phone: z.number(),
+  phone: z.number().optional(),
+  isProgrammer: z.boolean().optional()
 })
 
 
 //データvalidation
-userSchema.parse({
+const response = userSchema.parse({
   email: "email@email.com", 
   userName: "wewe00",
   phone: 12345012345,
+  isProgrammer: true
 })
+
+console.log(response);
+
+// --------- 
